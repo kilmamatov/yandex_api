@@ -1,0 +1,6 @@
+Django==4.2.0
+dadata==21.10.1
+djangorestframework==3.14.0
+django-filter==23.2
+django-rest-swagger==2.2.0
+
