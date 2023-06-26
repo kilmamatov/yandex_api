@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+Поиск по адрессу
+<form action="" method="POST" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Поиск</button>
+</form>
+
+<br><a href="/history_weather/">История поиска</a></li>
+
+{{ qs_parser }}
+{% endblock %}

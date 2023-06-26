@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h4>Населенный пункт</h4>
+{{ qs.data.geo_object.locality.name }}
+<h4>Текущая погода</h4>
+
+Температура: {{ qs.data.fact.temp}} градусов<br>
+Ощущается как: {{ qs.data.fact.feels_like }} градусов<br>
+Скорость ветра: {{ qs.data.fact.wind_speed }} м/с<br>
+Время запроса: {{ qs.now_dt }}
+
+<h4>Детальный прогноз</h4>
+{% for p in qs.data.forecasts %}
+Прогноз на: {{p.date}}<br>
+Восход солнца: {{p.sunrise}}<br>
+Закат солнца: {{p.set_end}}<br>
+<br>Ночь<br>
+Температура: {{p.parts.night.temp_avg}} градусов<br>
+Скорость ветра: {{p.parts.night.wind_speed}} м/с<br>
+Давление: {{p.parts.night.pressure_mm}} мм рт. ст.<br>
+Влажность воздуха: {{p.parts.night.humidity}} %<br>
+<br>Утро<br>
+Температура: {{p.parts.morning.temp_avg}} градусов<br>
+Скорость ветра: {{p.parts.morning.wind_speed}} м/с<br>
+Давление: {{p.parts.morning.pressure_mm}} мм рт. ст.<br>
+Влажность воздуха: {{p.parts.morning.humidity}} %<br>
+<br>День<br>
+Температура: {{p.parts.day.temp_avg}} градусов<br>
+Скорость ветра: {{p.parts.day.wind_speed}} м/с<br>
+Давление: {{p.parts.day.pressure_mm}} мм рт. ст.<br>
+Влажность воздуха: {{p.parts.day.humidity}} %<br>
+<br>Вечер<br>
+Температура: {{p.parts.evening.temp_avg}} градусов<br>
+Скорость ветра: {{p.parts.evening.wind_speed}} м/с<br>
+Давление: {{p.parts.evening.pressure_mm}} мм рт. ст.<br>
+Влажность воздуха: {{p.parts.evening.humidity}} %<br><br>
+{% endfor %}
+{% endblock %}

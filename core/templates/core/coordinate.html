@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+Поиск по координатам
+<form action="" method="POST" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Поиск</button>
+</form>
+
+<br>Населенный пункт: {{ qs.data.geo_object.locality.name }}
+<br>Температура: {{ qs.data.fact.temp}} градусов
+<br>Ощущается как: {{ qs.data.fact.feels_like }} градусов
+<br>Скорость ветра: {{ qs.data.fact.wind_speed }} м/с
+
+{% endblock %}

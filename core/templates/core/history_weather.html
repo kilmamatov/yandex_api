@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+Список запросов
+<ol>
+    {% for p in filter.qs %}
+    <li><a href="/weather_delail/{{p.pk}}">{{p}}</a>({{p.now_dt}})</li>
+    {% endfor %}
+</ol>
+    <form method="get">
+        {{ form.as_p }}
+        <input type="submit" />
+    </form>
+{% endblock %}

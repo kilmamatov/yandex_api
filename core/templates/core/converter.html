@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+{% load static %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сгенерировать речь</button>
+    </form>
+    {% if file_path %}
+        <audio controls>
+        <source src="{% static file_path %}" type="audio/wav">
+        </audio>
+    {% endif %}
+{% endblock %}
